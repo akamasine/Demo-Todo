@@ -28,6 +28,18 @@ cd ../backend
 docker build -t todo-backend:latest .
 minikube image load todo-backend:latest
 ```
+OR We can set docker to use minikube 
+```bash 
+#Setting up minikube as docker env
+eval $(minikube docker-env)
+```
+and build the images using 
+```bash 
+docker build -t <tag> .
+```
+This will directly build the images in minikube
+
+
 
 5. Apply Kubernetes manifests:
 ```bash
@@ -104,6 +116,11 @@ kubectl logs <pod-name>
 5. Check ingress controller logs:
 ```bash
 kubectl logs -n ingress-nginx -l app.kubernetes.io/name=ingress-nginx
+```
+
+6. Check image in minikube
+```bash
+minikube image ls
 ```
 
 ## Cleanup
